@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TurtleChallangeCSharp.Model
+namespace TurtleChallangeCSharp.Model.Enums
 {
-    public class Class1
+    public enum Directions
     {
+        North,
+        South,
+        East,
+        West
     }
 }
