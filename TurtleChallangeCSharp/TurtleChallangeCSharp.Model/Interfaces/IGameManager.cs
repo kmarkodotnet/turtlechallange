@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TurtleChallangeCSharp.Model.Entities;
 
-namespace TurtleChallangeCSharp.Model.Services
+namespace TurtleChallangeCSharp.Model.Interfaces
 {
-    public interface ITableConfigReader
+    public interface IGameManager
     {
-        TableConfig ReadConfig();
+        GameResults RunGame();
     }
 }

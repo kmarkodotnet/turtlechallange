@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Exceptions
 {
-    public class ParseException : BaseException
+    public class BaseException : Exception
     {
-        public new object Data { get; set; }
+        public string Reason { get; set; }
+        public new Exception InnerException { get; set; }
     }
 }

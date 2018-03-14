@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TurtleChallangeCSharp.Model.Enums
+namespace TurtleChallangeCSharp.Model.Interfaces
 {
-    public enum Directions
+    public interface IValidation
     {
-        N,
-        S,
-        E,
-        W
+        void Validate();
     }
 }

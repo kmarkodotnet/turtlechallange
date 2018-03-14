@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TurtleChallangeCSharp.Model.Entities;
 
-namespace TurtleChallangeCSharp.Model.Services
+namespace TurtleChallangeCSharp.Model.Interfaces
 {
-    public interface IMovesConfigReader
+    public interface ITableConfigParser : IConfigParser<TableConfig>
     {
-        MovesConfig ReadConfig();
     }
 }
