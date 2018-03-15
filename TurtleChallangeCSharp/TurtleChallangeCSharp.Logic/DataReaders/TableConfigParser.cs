@@ -11,7 +11,7 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Logic.DataReaders
 {
-    public class TableConfigParser : IConfigParser<TableConfig>
+    public class TableConfigParser : ITableConfigParser
     {
         public string[] Source { get; set; }
 

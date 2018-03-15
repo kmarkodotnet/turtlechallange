@@ -11,7 +11,7 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Logic.DataReaders
 {
-    public class MovesConfigParser : IConfigParser<MovesConfigs>
+    public class MovesConfigParser : IMovesConfigParser
     {
         public string[] Source { get; set; }
         

@@ -48,5 +48,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TurtleChallangeCSharp.Logic\TurtleChallangeCSharp.Logic.csproj">
+      <Project>{D0EDF474-E71C-416D-A132-9ACC995E3964}</Project>
+      <Name>TurtleChallangeCSharp.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurtleChallangeCSharp.Model\TurtleChallangeCSharp.Model.csproj">
+      <Project>{C2C0CC03-E468-46CA-A99B-EC6F84EC38A4}</Project>
+      <Name>TurtleChallangeCSharp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

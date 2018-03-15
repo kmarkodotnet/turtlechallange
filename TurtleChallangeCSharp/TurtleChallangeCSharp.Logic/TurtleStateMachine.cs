@@ -17,6 +17,8 @@ namespace TurtleChallangeCSharp.Logic
 
         public void Initialize(TableConfig tableConfig, MovesConfig movesConfig)
         {
+            TurtleState = new TurtleState();
+
             TurtleState.ActualMove = 0;
             TurtleState.Moves = movesConfig.Moves.ToArray();
             TurtleState.TableConfig = tableConfig;

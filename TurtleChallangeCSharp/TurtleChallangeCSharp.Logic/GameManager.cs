@@ -42,19 +42,19 @@ namespace TurtleChallangeCSharp.Logic
             }
             catch (ParseException pex)
             {
-                return new ErrorResult { ErrorMessage = pex.Reason };
+                return new ErrorResult { ResultString = pex.Reason };
             }
             catch (BusinessException bex)
             {
-                return new ErrorResult { ErrorMessage = bex.Reason };
+                return new ErrorResult { ResultString = bex.Reason };
             }
             catch (OutOfMemoryException oex)
             {
-                return new ErrorResult { ErrorMessage = "Application is out of memory" };
+                return new ErrorResult { ResultString = "Application is out of memory" };
             }
             catch (Exception ex)
             {
-                return new ErrorResult { ErrorMessage = "An error occured" };
+                return new ErrorResult { ResultString = "An error occured" };
             }
         }
 
@@ -67,8 +67,37 @@ namespace TurtleChallangeCSharp.Logic
             }
             else
             {
-
-                return new GameResults();
+                var grs = new GameResults();
+                int i = 1;
+                foreach (var movesConfig in MovesConfigs)
+                {
+                    var stateMachine = new TurtleStateMachine();
+                    stateMachine.Initialize(TableConfig, movesConfig);
+                    var state = stateMachine.Play();
+                    var message = string.Format("Sequence {0}: ",i);
+                    Result result;
+                    switch (state)
+                    {
+                        case Model.Enums.State.Success:
+                            result = new GameResult { ResultString = string.Format("{0}{1}", message, "Success!") };
+                            break;
+                        case Model.Enums.State.MineHit:
+                            result = new GameResult { ResultString = string.Format("{0}{1}", message, "Mine hit!") };
+                            break;
+                        case Model.Enums.State.StillInDander:
+                            result = new GameResult { ResultString = string.Format("{0}{1}", message, "Still in danger!") };
+                            break;
+                        case Model.Enums.State.Error:
+                            result = new GameResult { ResultString = string.Format("{0}{1}", message, "Error!") };
+                            break;
+                        default:
+                            throw new BusinessException("Invalid application state");
+                            break;
+                    }
+                    grs.Add(result);
+                    i++;
+                }
+                return grs;
             }
         }
     }
