@@ -12,11 +12,19 @@ namespace TurtleChallangeCSharp
     {
         static void Main(string[] args)
         {
-            var gameManager = new GameManager(new GameInputReader(@"c:\temp\game-settings.txt",@"c:\temp\moves.txt"), new MovesConfigParser(), new TableConfigParser());
-            var results = gameManager.RunGame();
-            foreach (var result in results)
+            if (args.Length != 2)
             {
-                Console.WriteLine(result.ResultString);
+                Console.WriteLine("Cannot start application with wrong number of arguments.");
+                Console.WriteLine("Example: .\\TurtleChallangeCSharp.exe game-settings moves");
+            }
+            else
+            {
+                var gameManager = new GameManager(new GameInputReader(args[0], args[1]), new MovesConfigParser(), new TableConfigParser());
+                var results = gameManager.RunGame();
+                foreach (var result in results)
+                {
+                    Console.WriteLine(result.ResultString);
+                }
             }
         }
     }
