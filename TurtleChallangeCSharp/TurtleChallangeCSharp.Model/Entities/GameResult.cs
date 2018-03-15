@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Entities
 {
-    public class GameResult
+    public class Result
     {
-        public virtual string ResultString { get; set; }
+
     }
 
-    public class GameResults : List<GameResult> { }
+    public class GameResult : Result
+    {
+        public string ResultString { get; set; }
+    }
+
+    public class ErrorResult : Result
+    {
+        public string ErrorMessage { get; set; }
+    }
+
+    public class GameResults : List<Result> { }
 }

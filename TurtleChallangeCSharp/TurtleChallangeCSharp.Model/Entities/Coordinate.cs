@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurtleChallangeCSharp.Model.Exceptions;
 using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Model.Entities
@@ -14,7 +15,10 @@ namespace TurtleChallangeCSharp.Model.Entities
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            if (X < 0 || Y < 0)
+            {
+                throw new InvalidPositionException("Coordinate values cannot be less than zero");
+            }
         }
     }
 }

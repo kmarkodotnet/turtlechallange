@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="DataReaders\GameInputReader.cs" />
     <Compile Include="GameManager.cs" />
-    <Compile Include="ParserHelper.cs" />
+    <Compile Include="Helpers\ParserHelper.cs" />
+    <Compile Include="Helpers\StateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataReaders\MovesConfigParser.cs" />
     <Compile Include="DataReaders\TableConfigParser.cs" />
+    <Compile Include="TurtleStateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TurtleChallangeCSharp.Model\TurtleChallangeCSharp.Model.csproj">
@@ -53,5 +55,6 @@
       <Name>TurtleChallangeCSharp.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

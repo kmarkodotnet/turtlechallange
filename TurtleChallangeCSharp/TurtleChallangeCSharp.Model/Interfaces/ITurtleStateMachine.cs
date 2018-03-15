@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TurtleChallangeCSharp.Model.Entities;
+using TurtleChallangeCSharp.Model.Enums;
 
 namespace TurtleChallangeCSharp.Model.Interfaces
 {
-    public interface IMovesConfigParser : IConfigParser<MovesConfigs>
+    public interface ITurtleStateMachine
     {
+        void Initialize(TableConfig tableConfig, MovesConfig movesConfig);
+        void Next();
+        State Play();
     }
 }

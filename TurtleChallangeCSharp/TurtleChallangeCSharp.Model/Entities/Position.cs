@@ -14,7 +14,7 @@ namespace TurtleChallangeCSharp.Model.Entities
 
         public void Valiadte()
         {
-
+            base.Validate();
         }
     }
 }

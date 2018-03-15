@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Enums
 {
-    public enum Directions
+    public enum State
     {
-        N = 0,
-        E = 1,
-        S = 2,
-        W = 3
+        Success,
+        MineHit,
+        StillInDander,
+        Error
     }
 }

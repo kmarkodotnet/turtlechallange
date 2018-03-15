@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TurtleChallangeCSharp.Model.Enums;
+using TurtleChallangeCSharp.Model.Exceptions;
 using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Model.Entities
@@ -25,7 +26,12 @@ namespace TurtleChallangeCSharp.Model.Entities
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            StartPosition.Valiadte();
+            Exit.Validate();
+            if (StartPosition.X > SizeX || StartPosition.Y > SizeY || Mines.Any(m => m.X > SizeX || m.Y > SizeY))
+            {
+                throw new InvalidPositionException("Coordinate values cannot be higher than table size");
+            }
         }
 
         //public override bool Equals(object obj)

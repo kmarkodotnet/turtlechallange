@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TurtleChallangeCSharp.Model.Enums;
 using TurtleChallangeCSharp.Model.Exceptions;
 
-namespace TurtleChallangeCSharp.Logic
+namespace TurtleChallangeCSharp.Logic.Helpers
 {
     internal class ParserHelper
     {

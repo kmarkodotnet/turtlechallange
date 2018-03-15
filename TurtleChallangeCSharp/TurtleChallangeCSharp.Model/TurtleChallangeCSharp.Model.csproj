@@ -48,14 +48,17 @@
     <Compile Include="Entities\TurtleState.cs" />
     <Compile Include="Enums\Directions.cs" />
     <Compile Include="Enums\Moves.cs" />
+    <Compile Include="Enums\State.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\InvalidPositionException.cs" />
     <Compile Include="Exceptions\ParseException.cs" />
     <Compile Include="Interfaces\IConfigParser.cs" />
     <Compile Include="Interfaces\IGameInputReader.cs" />
     <Compile Include="Interfaces\IGameManager.cs" />
     <Compile Include="Interfaces\IMovesConfigParser.cs" />
     <Compile Include="Interfaces\ITableConfigParser.cs" />
+    <Compile Include="Interfaces\ITurtleStateMachine.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

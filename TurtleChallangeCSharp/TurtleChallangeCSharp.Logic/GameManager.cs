@@ -15,54 +15,61 @@ namespace TurtleChallangeCSharp.Logic
         private ITableConfigParser _tableConfigParser;
         private IGameInputReader _gameInputReader;
 
-        private TurtleState turtleState;
+        private TableConfig TableConfig { get; set; }
+        private MovesConfigs MovesConfigs { get; set; }
 
         public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser)
         {
             _gameInputReader = gameInputReader;
             _movesConfigParser = movesConfigParser;
             _tableConfigParser = tableConfigParser;
-
-            turtleState = new TurtleState();
+            
         }
 
-        private string Initialize()
+        private Result Initialize()
         {
             try
             {
                 _tableConfigParser.Source = _gameInputReader.GetTableConfig();
                 _movesConfigParser.Source = _gameInputReader.GetMovesConfig();
 
-                var tableConfig = _tableConfigParser.ParseConfig();
-                var movesConfig = _movesConfigParser.ParseConfig();
+                TableConfig = _tableConfigParser.ParseConfig();
+                MovesConfigs = _movesConfigParser.ParseConfig();
 
-                turtleState.ActualMove = 0;
-                turtleState.MovesConfig = movesConfig;
-                turtleState.TableConfig = tableConfig;
-                turtleState.Position = tableConfig.StartPosition;
-
-                return string.Empty;
+                TableConfig.Validate();
+                
+                return new Result();
             }
             catch (ParseException pex)
             {
-
-                throw;
+                return new ErrorResult { ErrorMessage = pex.Reason };
             }
             catch (BusinessException bex)
             {
-
-                throw;
+                return new ErrorResult { ErrorMessage = bex.Reason };
+            }
+            catch (OutOfMemoryException oex)
+            {
+                return new ErrorResult { ErrorMessage = "Application is out of memory" };
             }
             catch (Exception ex)
             {
-
-                throw;
+                return new ErrorResult { ErrorMessage = "An error occured" };
             }
         }
 
         public GameResults RunGame()
         {
-            throw new NotImplementedException();
+            var initResult = Initialize();
+            if (initResult is ErrorResult)
+            {
+                return new GameResults { initResult };
+            }
+            else
+            {
+
+                return new GameResults();
+            }
         }
     }
 }

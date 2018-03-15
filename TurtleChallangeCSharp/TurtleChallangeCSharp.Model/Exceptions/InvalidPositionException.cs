@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Exceptions
 {
-    public class BusinessException : BaseException
+    public class InvalidPositionException : BusinessException
     {
-        public BusinessException()
+        public InvalidPositionException(string reason) : base(reason)
         {
-
-        }
-        public BusinessException(string reason)
-        {
-            Reason = reason;
         }
     }
 }
