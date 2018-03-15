@@ -17,13 +17,14 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
         public MovesConfigs ParseConfig()
         {
             var movesConfigs = new MovesConfigs();
-
-            for (int i = 0; i < Source.Length; i++)
+            if (Source != null && Source.Length > 0)
             {
-                var mc = ParseMovesLine(Source[i]);
-                movesConfigs.Add(mc);
+                for (int i = 0; i < Source.Length; i++)
+                {
+                    var mc = ParseMovesLine(Source[i]);
+                    movesConfigs.Add(mc);
+                }
             }
-
             return movesConfigs;
         }
 

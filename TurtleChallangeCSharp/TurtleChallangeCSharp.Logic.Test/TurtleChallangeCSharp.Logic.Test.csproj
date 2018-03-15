@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parsers\ParserHelperTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Parsers\MovesConfigParserTest.cs" />
+    <Compile Include="Parsers\TableConfigParserTest.cs" />
+    <Compile Include="TestHelpers\RandomData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

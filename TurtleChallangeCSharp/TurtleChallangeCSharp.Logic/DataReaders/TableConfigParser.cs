@@ -37,7 +37,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             var startPosRow = Source[3];
 
             var startPosValues = startPosRow.Split(' ');
-
+                
             if (startPosValues.Length != 3)
             {
                 throw new ParseException { Data = Source, Reason = string.Format("Start position parameter value is incorrect") };
@@ -45,6 +45,8 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             config.StartPosition.Direction = ParserHelper.TryParseDirections(startPosValues[2], "Start position");
 
             var coordinate = ParseCoordinate(startPosValues, "Start position");
+            config.StartPosition.X = coordinate.X;
+            config.StartPosition.Y = coordinate.Y;
         }
 
         private void SetExit(TableConfig config)

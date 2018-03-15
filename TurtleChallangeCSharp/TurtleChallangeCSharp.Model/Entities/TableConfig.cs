@@ -16,7 +16,7 @@ namespace TurtleChallangeCSharp.Model.Entities
         public Position StartPosition { get; set; }
         public Coordinate Exit { get; set; }
 
-        public ICollection<Coordinate> Mines { get; set; }
+        public List<Coordinate> Mines { get; set; }
 
         public TableConfig()
         {
@@ -27,5 +27,21 @@ namespace TurtleChallangeCSharp.Model.Entities
         {
             throw new NotImplementedException();
         }
+
+        //public override bool Equals(object obj)
+        //{
+        //    var tc = obj as TableConfig;
+        //    if (obj != null && tc != null)
+        //    {
+        //        return 
+        //            this.SizeX == tc.SizeX &&
+        //            this.SizeY == tc.SizeY &&
+        //            this.StartPosition.Equals(tc.StartPosition) &&
+        //            this.Exit.Equals(tc.Exit) &&
+        //            this.Mines.Count == tc.Mines
+        //    }
+        //    else
+        //        return false;
+        //}
     }
 }
