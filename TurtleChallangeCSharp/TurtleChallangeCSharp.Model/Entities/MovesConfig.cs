@@ -9,6 +9,10 @@ namespace TurtleChallangeCSharp.Model.Entities
 {
     public class MovesConfig
     {
+        public MovesConfig()
+        {
+            Moves = new List<Enums.Moves>();
+        }
         public List<Moves> Moves { get; set; }
     }
 

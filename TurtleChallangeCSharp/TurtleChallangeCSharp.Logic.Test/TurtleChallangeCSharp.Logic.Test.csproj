@@ -48,11 +48,23 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsers\ParserHelperTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TurtleChallangeCSharp.Logic\TurtleChallangeCSharp.Logic.csproj">
+      <Project>{d0edf474-e71c-416d-a132-9acc995e3964}</Project>
+      <Name>TurtleChallangeCSharp.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurtleChallangeCSharp.Model\TurtleChallangeCSharp.Model.csproj">
+      <Project>{c2c0cc03-e468-46ca-a99b-ec6f84ec38a4}</Project>
+      <Name>TurtleChallangeCSharp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

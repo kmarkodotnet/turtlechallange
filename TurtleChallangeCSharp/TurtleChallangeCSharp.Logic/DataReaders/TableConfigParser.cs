@@ -42,7 +42,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             {
                 throw new ParseException { Data = Source, Reason = string.Format("Start position parameter value is incorrect") };
             }
-            config.StartPosition.Direction = TryParseDirections(startPosValues[2], "Start position");
+            config.StartPosition.Direction = ParserHelper.TryParseDirections(startPosValues[2], "Start position");
 
             var coordinate = ParseCoordinate(startPosValues, "Start position");
         }
@@ -93,37 +93,9 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
         private Coordinate ParseCoordinate(string[] coordinates, string errorString)
         {
             var coord = new Coordinate();
-            coord.X = TryParse(coordinates[0], string.Format("{0} X value", errorString));
-            coord.Y = TryParse(coordinates[1], string.Format("{0} Y value", errorString));
+            coord.X = ParserHelper.TryParse(coordinates[0], string.Format("{0} X value", errorString));
+            coord.Y = ParserHelper.TryParse(coordinates[1], string.Format("{0} Y value", errorString));
             return coord;
         }
-
-        private Directions TryParseDirections(string value, string errorString)
-        {
-            Directions parsedValue = 0;
-
-            if (Directions.TryParse(value, out parsedValue))
-            {
-                return parsedValue;
-            }
-            else
-            {
-                throw new ParseException { Data = value, Reason = string.Format("{0} parameter is incorrect", errorString) };
-            }
-        }
-
-        private int TryParse(string value, string errorString)
-        {
-            int parsedValue = 0;
-            if (int.TryParse(value, out parsedValue))
-            {
-                return parsedValue;
-            }
-            else
-            {
-                throw new ParseException { Data = value, Reason = string.Format("{0} parameter is incorrect",errorString) };
-            }
-        }
-        
     }
 }

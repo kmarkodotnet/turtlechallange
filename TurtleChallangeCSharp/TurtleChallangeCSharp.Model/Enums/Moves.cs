@@ -8,9 +8,9 @@ namespace TurtleChallangeCSharp.Model.Enums
 {
     public enum Moves
     {
-        Right,
-        Left,
-        Move
+        R,
+        L,
+        M
     }
 
 }
