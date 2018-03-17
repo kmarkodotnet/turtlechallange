@@ -12,7 +12,7 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Logic.DataReaders
 {
-    public class MovesConfigParser : IMovesConfigParser
+    public class MovesConfigParser : IConfigParser<MovesConfigs>
     {
         public string[] Source { get; set; }
         ILogger _logger;

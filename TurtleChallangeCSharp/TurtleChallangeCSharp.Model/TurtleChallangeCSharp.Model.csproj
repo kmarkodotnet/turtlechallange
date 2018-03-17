@@ -55,8 +55,6 @@
     <Compile Include="Interfaces\IConfigParser.cs" />
     <Compile Include="Interfaces\IGameInputReader.cs" />
     <Compile Include="Interfaces\IGameManager.cs" />
-    <Compile Include="Interfaces\IMovesConfigParser.cs" />
-    <Compile Include="Interfaces\ITableConfigParser.cs" />
     <Compile Include="Interfaces\ITurtleStateMachine.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

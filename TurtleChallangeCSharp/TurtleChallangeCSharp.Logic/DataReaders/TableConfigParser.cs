@@ -12,7 +12,7 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Logic.DataReaders
 {
-    public class TableConfigParser : ITableConfigParser
+    public class TableConfigParser : IConfigParser<TableConfig>
     {
         public string[] Source { get; set; }
         ILogger _logger;

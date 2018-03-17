@@ -12,8 +12,8 @@ namespace TurtleChallangeCSharp.Logic
 {
     public class GameManager : IGameManager
     {
-        private IMovesConfigParser _movesConfigParser;
-        private ITableConfigParser _tableConfigParser;
+        private IConfigParser<MovesConfigs> _movesConfigParser;
+        private IConfigParser<TableConfig> _tableConfigParser;
         private IGameInputReader _gameInputReader;
         private ITurtleStateMachine _turtleStateMachine;
 
@@ -22,7 +22,7 @@ namespace TurtleChallangeCSharp.Logic
 
         ILogger _logger;
 
-        public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser, ITurtleStateMachine turtleStateMachine, ILogger logger)
+        public GameManager(IGameInputReader gameInputReader, IConfigParser<MovesConfigs> movesConfigParser, IConfigParser<TableConfig> tableConfigParser, ITurtleStateMachine turtleStateMachine, ILogger logger)
         {
             _gameInputReader = gameInputReader;
             _movesConfigParser = movesConfigParser;
