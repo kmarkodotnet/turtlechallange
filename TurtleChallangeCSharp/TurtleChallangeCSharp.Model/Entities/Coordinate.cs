@@ -8,11 +8,24 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Model.Entities
 {
+    /// <summary>
+    /// Objects coordinate
+    /// </summary>
     public class Coordinate : IValidation
     {
+        /// <summary>
+        /// X coordinate
+        /// </summary>
         public int X { get; set; }
+
+        /// <summary>
+        /// Y coordinate
+        /// </summary>
         public int Y { get; set; }
 
+        /// <summary>
+        /// Coordinate validity
+        /// </summary>
         public void Validate()
         {
             if (X < 0 || Y < 0)
@@ -21,6 +34,9 @@ namespace TurtleChallangeCSharp.Model.Entities
             }
         }
 
+        /// <summary>
+        /// Coordinate equality
+        /// </summary>
         public override bool Equals(object obj)
         {
             var c = obj as Coordinate;

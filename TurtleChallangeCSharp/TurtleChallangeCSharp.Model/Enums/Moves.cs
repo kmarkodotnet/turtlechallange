@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Enums
 {
+    /// <summary>
+    /// Available moves
+    /// </summary>
     public enum Moves
     {
         R,

@@ -9,17 +9,35 @@ using TurtleChallangeCSharp.Model.Interfaces;
 
 namespace TurtleChallangeCSharp.Model.Entities
 {
-    public class TurtleState: IValidation
+    /// <summary>
+    /// Full state configuration of the game
+    /// </summary>
+    public class StateConfiguration: IValidation
     {
+        /// <summary>
+        /// Actual position iof the turtle
+        /// </summary>
         public Position Position { get; set; }
 
+        /// <summary>
+        /// Table configuration
+        /// </summary>
         public TableConfig TableConfig { get; set; }
 
+        /// <summary>
+        /// The number of moves made by turtle
+        /// </summary>
         public int ActualMove { get; set; }
+
+        /// <summary>
+        /// All moves
+        /// </summary>
         public Moves[] Moves { get; set; }
+        
 
-        public State State { get; set; }
-
+        /// <summary>
+        /// Validation of the actual state
+        /// </summary>
         public void Validate()
         {
             Position.Valiadte();
@@ -33,6 +51,9 @@ namespace TurtleChallangeCSharp.Model.Entities
             }
         }
 
+        /// <summary>
+        /// Full validation of the state
+        /// </summary>
         public void FullValidate()
         {
             TableConfig.Validate();

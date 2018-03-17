@@ -7,6 +7,9 @@ using TurtleChallangeCSharp.Model.Entities;
 
 namespace TurtleChallangeCSharp.Model.Interfaces
 {
+    /// <summary>
+    /// Parse the moves configuration data
+    /// </summary>
     public interface IMovesConfigParser : IConfigParser<MovesConfigs>
     {
     }

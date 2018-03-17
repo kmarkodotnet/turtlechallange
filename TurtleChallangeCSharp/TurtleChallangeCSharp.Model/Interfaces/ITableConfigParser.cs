@@ -7,6 +7,9 @@ using TurtleChallangeCSharp.Model.Entities;
 
 namespace TurtleChallangeCSharp.Model.Interfaces
 {
+    /// <summary>
+    /// Parse the table configuration data
+    /// </summary>
     public interface ITableConfigParser : IConfigParser<TableConfig>
     {
     }

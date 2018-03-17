@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Enums
 {
+    /// <summary>
+    /// Available states
+    /// </summary>
     public enum State
     {
         Success,

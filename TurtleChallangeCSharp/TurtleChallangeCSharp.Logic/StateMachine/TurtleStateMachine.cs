@@ -13,52 +13,51 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
 {
     public class TurtleStateMachine : ITurtleStateMachine
     {
-        private TurtleState TurtleState { get; set; }
+        private StateConfiguration StateConfiguration { get; set; }
+        private State TurtleState { get; set; }
 
         public void Initialize(TableConfig tableConfig, MovesConfig movesConfig)
         {
-            TurtleState = new TurtleState();
+            StateConfiguration = new StateConfiguration();
 
-            TurtleState.ActualMove = 0;
-            TurtleState.Moves = movesConfig.Moves.ToArray();
-            TurtleState.TableConfig = tableConfig;
-            TurtleState.Position = tableConfig.StartPosition;
+            StateConfiguration.ActualMove = 0;
+            StateConfiguration.Moves = movesConfig.Moves.ToArray();
+            StateConfiguration.TableConfig = tableConfig;
+            StateConfiguration.Position = tableConfig.StartPosition;
 
-            TurtleState.FullValidate();
+            StateConfiguration.FullValidate();
 
-            TurtleState.State = StateHelper.GetState(TurtleState.Position, TurtleState.TableConfig.Mines, TurtleState.TableConfig.Exit);
+            TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
         }
 
         internal void Next()
         {
-            TurtleState.ActualMove++;
-            var actualMove = TurtleState.Moves[TurtleState.ActualMove - 1];
-            var actualPosition = TurtleState.Position;
-            TurtleState.Position = StateHelper.GetNewPosition(actualMove, actualPosition);
+            StateConfiguration.ActualMove++;
+            var actualMove = StateConfiguration.Moves[StateConfiguration.ActualMove - 1];
+            var actualPosition = StateConfiguration.Position;
+            StateConfiguration.Position = StateHelper.GetNewPosition(actualMove, actualPosition);
             
-            TurtleState.Validate();
+            StateConfiguration.Validate();
 
-            TurtleState.State = StateHelper.GetState(TurtleState.Position, TurtleState.TableConfig.Mines, TurtleState.TableConfig.Exit);
+            TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
         }
-
-
+        
         public State Play()
         {
-            bool canMove = TurtleState.ActualMove < TurtleState.Moves.Length && !StateHelper.FinishState(TurtleState.State);
+            bool canMove = StateConfiguration.ActualMove < StateConfiguration.Moves.Length && !StateHelper.FinishState(TurtleState);
             while (canMove)
             {
                 try
                 {
                     Next();
-                    canMove = TurtleState.ActualMove < TurtleState.Moves.Length && !StateHelper.FinishState(TurtleState.State);
+                    canMove = StateConfiguration.ActualMove < StateConfiguration.Moves.Length && !StateHelper.FinishState(TurtleState);
                 }
                 catch (BusinessException bex)
                 {
                     return State.Error;
                 }
             }
-            return StateHelper.GetState(TurtleState.Position, TurtleState.TableConfig.Mines, TurtleState.TableConfig.Exit);
+            return TurtleState;
         }
-                
     }
 }

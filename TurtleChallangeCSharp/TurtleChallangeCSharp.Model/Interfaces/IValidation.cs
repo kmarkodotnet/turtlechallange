@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Interfaces
 {
+    /// <summary>
+    /// Validation on entities
+    /// </summary>
     public interface IValidation
     {
         void Validate();
