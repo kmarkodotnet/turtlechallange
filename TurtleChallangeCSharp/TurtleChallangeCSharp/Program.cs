@@ -19,7 +19,7 @@ namespace TurtleChallangeCSharp
             }
             else
             {
-                var gameManager = new GameManager(new GameInputReader(args[0], args[1]), new MovesConfigParser(), new TableConfigParser());
+                var gameManager = new GameManager(new GameInputReader(args[0], args[1]), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
                 var results = gameManager.RunGame();
                 foreach (var result in results)
                 {

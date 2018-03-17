@@ -14,16 +14,17 @@ namespace TurtleChallangeCSharp.Logic
         private IMovesConfigParser _movesConfigParser;
         private ITableConfigParser _tableConfigParser;
         private IGameInputReader _gameInputReader;
+        private ITurtleStateMachine _turtleStateMachine;
 
         private TableConfig TableConfig { get; set; }
         private MovesConfigs MovesConfigs { get; set; }
 
-        public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser)
+        public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser, ITurtleStateMachine turtleStateMachine)
         {
             _gameInputReader = gameInputReader;
             _movesConfigParser = movesConfigParser;
             _tableConfigParser = tableConfigParser;
-            
+            _turtleStateMachine = turtleStateMachine;
         }
 
         private Result Initialize()
@@ -71,9 +72,8 @@ namespace TurtleChallangeCSharp.Logic
                 int i = 1;
                 foreach (var movesConfig in MovesConfigs)
                 {
-                    var stateMachine = new TurtleStateMachine();
-                    stateMachine.Initialize(TableConfig, movesConfig);
-                    var state = stateMachine.Play();
+                    _turtleStateMachine.Initialize(TableConfig, movesConfig);
+                    var state = _turtleStateMachine.Play();
                     var message = string.Format("Sequence {0}: ",i);
                     Result result;
                     switch (state)
