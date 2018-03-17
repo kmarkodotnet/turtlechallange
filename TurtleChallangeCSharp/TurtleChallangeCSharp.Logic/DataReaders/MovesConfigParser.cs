@@ -44,7 +44,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             for (int i = 0; i < values.Length; i++)
             {
                 var m = ParserHelper.TryParseMove(values[i]);
-                mc.Moves.Add(m);
+                mc.Add(m);
             }
             return mc;
         }

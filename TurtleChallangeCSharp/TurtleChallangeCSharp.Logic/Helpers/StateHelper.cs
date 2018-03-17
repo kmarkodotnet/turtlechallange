@@ -9,13 +9,28 @@ using TurtleChallangeCSharp.Model.Exceptions;
 
 namespace TurtleChallangeCSharp.Logic.Helpers
 {
+    /// <summary>
+    /// State functions
+    /// </summary>
     public class StateHelper
     {
+        /// <summary>
+        /// Is the turtle in a mine?
+        /// </summary>
+        /// <param name="mines">Mines</param>
+        /// <param name="position">Turtle position</param>
+        /// <returns></returns>
         internal static bool IsInMine(List<Coordinate> mines, Position position)
         {
             return mines.Any(m => m.X == position.X && m.Y == position.Y);
         }
         
+        /// <summary>
+        /// Calcualtes the new position of the turtle after a move
+        /// </summary>
+        /// <param name="actualMove">The next move</param>
+        /// <param name="actualPosition">The actual position of the turtle</param>
+        /// <returns></returns>
         internal static Position GetNewPosition(Moves actualMove, Position actualPosition)
         {
             if (actualMove == Moves.M)
@@ -28,6 +43,12 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
         }
 
+        /// <summary>
+        /// Makes a turn move on the turtle
+        /// </summary>
+        /// <param name="actualMove">The direction of the turl</param>
+        /// <param name="actualPosition">The actual position of the turtle</param>
+        /// <returns></returns>
         internal static Position Turn(Moves actualMove, Position actualPosition)
         {
             if (actualMove == Moves.M)
@@ -42,6 +63,11 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             return newPosition;
         }
 
+        /// <summary>
+        /// Calculates if the turtle is finishing the game in a state
+        /// </summary>
+        /// <param name="state">State of the turtle</param>
+        /// <returns></returns>
         internal static bool FinishState(State state)
         {
             switch (state)
@@ -61,6 +87,13 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
         }
 
+        /// <summary>
+        /// Calculates the state of the turtle
+        /// </summary>
+        /// <param name="position">The actual position of the turtle</param>
+        /// <param name="mines">The mines list</param>
+        /// <param name="exit">The exit point</param>
+        /// <returns></returns>
         internal static State GetState(Position position, List<Coordinate> mines, Coordinate exit)
         {
             if (IsInMine(mines, position))
@@ -77,6 +110,11 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
         }
 
+        /// <summary>
+        /// Moves the turtle in its position
+        /// </summary>
+        /// <param name="actualPosition">The actual position of the turtle</param>
+        /// <returns></returns>
         internal static Position MoveInDirection(Position actualPosition)
         {
             var newPosition = new Position { Direction = actualPosition.Direction, X = actualPosition.X, Y = actualPosition.Y };

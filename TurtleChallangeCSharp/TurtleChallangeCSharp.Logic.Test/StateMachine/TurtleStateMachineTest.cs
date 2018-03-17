@@ -140,7 +140,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 0 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.L } });
+                   new Model.Entities.MovesConfig {Model.Enums.Moves.L });
             Assert.AreEqual(tsm.Play(), Model.Enums.State.StillInDander);
 
             tsm.Initialize(
@@ -155,7 +155,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 0 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.L, Model.Enums.Moves.M } });
+                   new Model.Entities.MovesConfig {  Model.Enums.Moves.L, Model.Enums.Moves.M  });
             Assert.AreEqual(tsm.Play(), Model.Enums.State.Success);
 
             tsm.Initialize(
@@ -170,7 +170,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 0 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.L, Model.Enums.Moves.M, Model.Enums.Moves.L, Model.Enums.Moves.M} });
+                   new Model.Entities.MovesConfig { Model.Enums.Moves.L, Model.Enums.Moves.M, Model.Enums.Moves.L, Model.Enums.Moves.M} );
             Assert.AreEqual(tsm.Play(), Model.Enums.State.Success);
 
             tsm.Initialize(
@@ -185,7 +185,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 1 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.L, Model.Enums.Moves.M, Model.Enums.Moves.L, Model.Enums.Moves.M } });
+                   new Model.Entities.MovesConfig {  Model.Enums.Moves.L, Model.Enums.Moves.M, Model.Enums.Moves.L, Model.Enums.Moves.M });
             Assert.AreEqual(tsm.Play(), Model.Enums.State.Success);
 
             tsm.Initialize(
@@ -200,7 +200,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 1 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.R, Model.Enums.Moves.R, Model.Enums.Moves.M, Model.Enums.Moves.R, Model.Enums.Moves.M } });
+                   new Model.Entities.MovesConfig {  Model.Enums.Moves.R, Model.Enums.Moves.R, Model.Enums.Moves.M, Model.Enums.Moves.R, Model.Enums.Moves.M } );
             Assert.AreEqual(tsm.Play(), Model.Enums.State.MineHit);
         }
 
@@ -221,7 +221,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                             new Model.Entities.Coordinate { X = 0, Y = 1 }
                         }
                    },
-                   new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.M} });
+                   new Model.Entities.MovesConfig {  Model.Enums.Moves.M} );
             Assert.AreEqual(tsm.Play(), Model.Enums.State.LeftTable);
         }
     }

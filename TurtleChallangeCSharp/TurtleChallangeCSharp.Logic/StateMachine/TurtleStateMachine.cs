@@ -36,11 +36,11 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
             StateConfiguration = new StateConfiguration();
 
             StateConfiguration.ActualMove = 0;
-            StateConfiguration.Moves = movesConfig.Moves.ToArray();
+            StateConfiguration.Moves = movesConfig.ToArray();
             StateConfiguration.TableConfig = tableConfig;
             StateConfiguration.Position = tableConfig.StartPosition;
 
-            StateConfiguration.FullValidate();
+            StateConfiguration.Validate();
 
             TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
             
@@ -54,7 +54,7 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
             var actualPosition = StateConfiguration.Position;
             StateConfiguration.Position = StateHelper.GetNewPosition(actualMove, actualPosition);
             
-            StateConfiguration.Validate();
+            StateConfiguration.LightValidate();
 
             TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
         }

@@ -11,26 +11,26 @@ namespace TurtleChallangeCSharp.Logger
     {
         public void BusinessFail(int eventId, string eventName, object businessData = null)
         {
-            SomeLogger(DateTime.Now, eventId, eventName, businessData);
+            LoggerFramework(DateTime.Now, eventId, eventName, businessData);
         }
 
         public void BusinessSuccess(int eventId, string eventName, object businessData = null)
         {
-            SomeLogger(DateTime.Now, eventId, eventName, businessData);
+            LoggerFramework(DateTime.Now, eventId, eventName, businessData);
         }
 
         public void PublishException(Exception exception)
         {
-            SomeLogger(DateTime.Now, exception.Message, exception.StackTrace);
+            LoggerFramework(DateTime.Now, exception.Message, exception.StackTrace);
         }
 
         public void PublishException(Exception exception, object data)
         {
-            SomeLogger(DateTime.Now, exception.Message, exception.StackTrace, data);
+            LoggerFramework(DateTime.Now, exception.Message, exception.StackTrace, data);
         }
 
-        private void SomeLogger(DateTime dateTime, int eventId, string eventName, object businessData) { }
-        private void SomeLogger(DateTime dateTime, string message, string startTrace) { }
-        private void SomeLogger(DateTime dateTime, string message, string startTrace, object data) { }
+        private void LoggerFramework(DateTime dateTime, int eventId, string eventName, object businessData) { }
+        private void LoggerFramework(DateTime dateTime, string message, string startTrace) { }
+        private void LoggerFramework(DateTime dateTime, string message, string startTrace, object data) { }
     }
 }

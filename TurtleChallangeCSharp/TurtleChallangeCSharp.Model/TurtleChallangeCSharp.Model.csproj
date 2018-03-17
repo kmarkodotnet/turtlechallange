@@ -45,11 +45,10 @@
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\TableConfig.cs" />
     <Compile Include="Entities\Coordinate.cs" />
-    <Compile Include="Entities\TurtleState.cs" />
+    <Compile Include="Entities\StateConfiguration.cs" />
     <Compile Include="Enums\Directions.cs" />
     <Compile Include="Enums\Moves.cs" />
     <Compile Include="Enums\State.cs" />
-    <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\InvalidPositionException.cs" />
     <Compile Include="Exceptions\ParseException.cs" />

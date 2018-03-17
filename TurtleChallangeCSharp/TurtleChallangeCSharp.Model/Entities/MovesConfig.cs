@@ -10,13 +10,8 @@ namespace TurtleChallangeCSharp.Model.Entities
     /// <summary>
     /// Moves configuration
     /// </summary>
-    public class MovesConfig
+    public class MovesConfig : List<Enums.Moves>
     {
-        public MovesConfig()
-        {
-            Moves = new List<Enums.Moves>();
-        }
-        public List<Moves> Moves { get; set; }
     }
 
     /// <summary>

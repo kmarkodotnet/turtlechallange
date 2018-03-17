@@ -43,6 +43,7 @@
     <Compile Include="BL.cs" />
     <Compile Include="DataReaders\GameInputReader.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\ParserHelper.cs" />
     <Compile Include="Helpers\StateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

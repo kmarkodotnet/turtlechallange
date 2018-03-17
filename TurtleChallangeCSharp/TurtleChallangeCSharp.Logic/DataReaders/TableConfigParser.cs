@@ -50,7 +50,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             {
                 throw new ParseException(string.Format("Start position parameter value is incorrect") ) { ParseData = Source };
             }
-            config.StartPosition.Direction = ParserHelper.TryParseDirections(startPosValues[2], "Start position");
+            config.StartPosition.Direction = ParserHelper.TryParseDirections(startPosValues[2]);
 
             var coordinate = ParseCoordinate(startPosValues, "Start position");
             config.StartPosition.X = coordinate.X;

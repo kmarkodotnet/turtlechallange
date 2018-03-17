@@ -38,7 +38,7 @@ namespace TurtleChallangeCSharp.Model.Entities
         /// <summary>
         /// Validation of the actual state
         /// </summary>
-        public void Validate()
+        public void LightValidate()
         {
             Position.Valiadte();
             if (Position.X >= TableConfig.SizeX || Position.Y >= TableConfig.SizeY)
@@ -54,10 +54,10 @@ namespace TurtleChallangeCSharp.Model.Entities
         /// <summary>
         /// Full validation of the state
         /// </summary>
-        public void FullValidate()
+        public void Validate()
         {
             TableConfig.Validate();
-            Validate();
+            LightValidate();
         }
     }
 }

@@ -21,14 +21,14 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
             parser.Source = source;
 
             var mc = parser.ParseConfig();
-            Assert.IsTrue(mc.Count == 2 && mc[0].Moves.Count == 5 && mc[1].Moves.Count == 4);
-            var m = mc[0].Moves;
+            Assert.IsTrue(mc.Count == 2 && mc[0].Count == 5 && mc[1].Count == 4);
+            var m = mc[0];
             Assert.IsTrue(m[0] == Model.Enums.Moves.R);
             Assert.IsTrue(m[1] == Model.Enums.Moves.M);
             Assert.IsTrue(m[2] == Model.Enums.Moves.L);
             Assert.IsTrue(m[3] == Model.Enums.Moves.M);
             Assert.IsTrue(m[4] == Model.Enums.Moves.M);
-            m = mc[1].Moves;
+            m = mc[1];
             Assert.IsTrue(m[0] == Model.Enums.Moves.R);
             Assert.IsTrue(m[1] == Model.Enums.Moves.M);
             Assert.IsTrue(m[2] == Model.Enums.Moves.M);
@@ -45,11 +45,11 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
             parser.Source = new string[1] { msSource };
             var mc = parser.ParseConfig();
 
-            Assert.IsTrue(mc.Count == 1 && mc[0].Moves.Count == ms.Count);
+            Assert.IsTrue(mc.Count == 1 && mc[0].Count == ms.Count);
 
-            for (int i = 0; i < mc[0].Moves.Count; i++)
+            for (int i = 0; i < mc[0].Count; i++)
             {
-                Assert.AreEqual(mc[0].Moves[i], ms[i]);
+                Assert.AreEqual(mc[0][i], ms[i]);
             }
         }
         [TestMethod]
@@ -59,14 +59,15 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
             var randomData = new RandomData();
 
             var rowsCount = 1000000;
-            var msr = new MovesConfigs();
+            var mcss = new MovesConfigs();
             parser.Source = new string[rowsCount];
             for (int i = 0; i < rowsCount; i++)
             {
-                var ms = randomData.GetMoves(maxLineLength);
-                msr.Add(new MovesConfig { Moves = ms });
+                var mcs = new MovesConfig();
+                mcs.AddRange(randomData.GetMoves(maxLineLength));
+                mcss.Add(mcs);
 
-                var msSource = string.Join(" ", ms);
+                var msSource = string.Join(" ", mcs);
                 parser.Source[i] = msSource;
             }
             
@@ -76,9 +77,9 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
 
             for (int i = 0; i < rowsCount; i++)
             {
-                for (int j = 0; j < mc[i].Moves.Count; j++)
+                for (int j = 0; j < mc[i].Count; j++)
                 {
-                    Assert.AreEqual(mc[i].Moves[j], msr[i].Moves[j]);
+                    Assert.AreEqual(mc[i][j], mcss[i][j]);
                 }
             }   
         }
@@ -132,7 +133,7 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
             parser.Source = source;
 
             var mc = parser.ParseConfig();
-            Assert.IsTrue(mc.Count == 1 && mc[0].Moves.Count == 1 && mc[0].Moves[0] == Model.Enums.Moves.R);
+            Assert.IsTrue(mc.Count == 1 && mc[0].Count == 1 && mc[0][0] == Model.Enums.Moves.R);
         }
     }
 }

@@ -8,29 +8,20 @@ using TurtleChallangeCSharp.Model.Exceptions;
 
 namespace TurtleChallangeCSharp.Logic.Helpers
 {
+    /// <summary>
+    /// Parser helper
+    /// </summary>
     internal class ParserHelper
     {
-        internal static List<string> GetEnumElements<T>()
-            where T : struct, IConvertible
-        {
-            if (!typeof(T).IsEnum)
-            {
-                throw new ArgumentException("T must be an enumerated type");
-            }
-            var elements = new List<string>();
-            var iterator = Enum.GetValues(typeof(T)).GetEnumerator();
-            while (iterator.MoveNext())
-            {
-                var item = iterator.Current;
-                elements.Add(item.ToString());
-            }
-            return elements;
-        }
-
+        /// <summary>
+        /// Parses a move enum value
+        /// </summary>
+        /// <param name="value">A 'move' string</param>
+        /// <returns></returns>
         internal static Moves TryParseMove(string value)
         {
             Moves parsedValue = 0;
-            if (Moves.TryParse(value, out parsedValue) && GetEnumElements<Moves>().Contains(value))
+            if (Moves.TryParse(value, out parsedValue) && EnumHelper.GetEnumElements<Moves>().Contains(value))
             {
                 return parsedValue;
             }
@@ -40,20 +31,31 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
         }
 
-        internal static Directions TryParseDirections(string value, string errorString)
+        /// <summary>
+        /// Parses a direction enum value
+        /// </summary>
+        /// <param name="value">A 'direction' string</param>
+        /// <returns></returns>
+        internal static Directions TryParseDirections(string value)
         {
             Directions parsedValue = 0;
 
-            if (Directions.TryParse(value, out parsedValue) && GetEnumElements<Directions>().Contains(value))
+            if (Directions.TryParse(value, out parsedValue) && EnumHelper.GetEnumElements<Directions>().Contains(value))
             {
                 return parsedValue;
             }
             else
             {
-                throw new ParseException(string.Format("{0} parameter is incorrect", errorString)) { ParseData = value };
+                throw new ParseException("Start position parameter is incorrect") { ParseData = value };
             }
         }
 
+        /// <summary>
+        /// Parses an integer value
+        /// </summary>
+        /// <param name="value">Value to parse</param>
+        /// <param name="errorString">Error string depends on the kind of the value to parse</param>
+        /// <returns></returns>
         internal static int TryParse(string value, string errorString)
         {
             int parsedValue = 0;

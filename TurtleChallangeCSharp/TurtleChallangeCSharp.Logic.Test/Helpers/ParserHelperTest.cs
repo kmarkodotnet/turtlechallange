@@ -29,20 +29,20 @@ namespace TurtleChallangeCSharp.Logic.Test.Helpers
         [TestMethod]
         public void TryParseDirectionsTest()
         {
-            Assert.AreEqual(ParserHelper.TryParseDirections("N",""), Model.Enums.Directions.N);
-            Assert.AreEqual(ParserHelper.TryParseDirections("S",""), Model.Enums.Directions.S);
-            Assert.AreEqual(ParserHelper.TryParseDirections("E",""), Model.Enums.Directions.E);
-            Assert.AreEqual(ParserHelper.TryParseDirections("W",""), Model.Enums.Directions.W);
+            Assert.AreEqual(ParserHelper.TryParseDirections("N"), Model.Enums.Directions.N);
+            Assert.AreEqual(ParserHelper.TryParseDirections("S"), Model.Enums.Directions.S);
+            Assert.AreEqual(ParserHelper.TryParseDirections("E"), Model.Enums.Directions.E);
+            Assert.AreEqual(ParserHelper.TryParseDirections("W"), Model.Enums.Directions.W);
 
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("w", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("s", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("e", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("n", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("ne", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("n,e", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("NE", ""));
-            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("0", ""));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections(""));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("w"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("s"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("e"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("n"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("ne"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("n,e"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("NE"));
+            Assert.ThrowsException<ParseException>(() => ParserHelper.TryParseDirections("0"));
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace TurtleChallangeCSharp.Logic.Test.Helpers
         [TestMethod]
         public void GetEnumElementsTest()
         {
-            var testEnum = ParserHelper.GetEnumElements<testEnum>();
+            var testEnum = EnumHelper.GetEnumElements<testEnum>();
             Assert.IsTrue(testEnum.Contains("A") && testEnum.Contains("AB") && testEnum.Contains("a"));
             Assert.IsFalse(testEnum.Contains("ab"));
         }
