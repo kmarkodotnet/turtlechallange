@@ -30,7 +30,7 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
             TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
         }
 
-        internal void Next()
+        private void Next()
         {
             StateConfiguration.ActualMove++;
             var actualMove = StateConfiguration.Moves[StateConfiguration.ActualMove - 1];
