@@ -11,7 +11,6 @@ namespace TurtleChallangeCSharp.Model.Interfaces
     public interface ITurtleStateMachine
     {
         void Initialize(TableConfig tableConfig, MovesConfig movesConfig);
-        void Next();
         State Play();
     }
 }

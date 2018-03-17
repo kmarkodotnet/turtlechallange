@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TurtleChallangeCSharp.Logic.Helpers;
 using TurtleChallangeCSharp.Model.Exceptions;
 
-namespace TurtleChallangeCSharp.Logic.Test.Parsers
+namespace TurtleChallangeCSharp.Logic.Test.Helpers
 {
     [TestClass]
     public class ParserHelperTest

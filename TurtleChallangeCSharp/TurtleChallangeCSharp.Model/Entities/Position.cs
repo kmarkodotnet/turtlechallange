@@ -16,5 +16,15 @@ namespace TurtleChallangeCSharp.Model.Entities
         {
             base.Validate();
         }
+
+        public override bool Equals(object obj)
+        {
+            var c = obj as Position;
+            if (c != null)
+            {
+                return c.X == X && c.Y == Y && c.Direction == Direction;
+            }
+            return false;
+        }
     }
 }

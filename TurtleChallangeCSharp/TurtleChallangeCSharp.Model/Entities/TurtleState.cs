@@ -23,7 +23,7 @@ namespace TurtleChallangeCSharp.Model.Entities
         public void Validate()
         {
             Position.Valiadte();
-            if (Position.X > TableConfig.SizeX || Position.Y > TableConfig.SizeY)
+            if (Position.X >= TableConfig.SizeX || Position.Y >= TableConfig.SizeY)
             {
                 throw new InvalidPositionException("Coordinate values cannot be higher than table size");
             }

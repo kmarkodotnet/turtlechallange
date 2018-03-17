@@ -5,7 +5,7 @@ using TurtleChallangeCSharp.Logic.Test.TestHelpers;
 using TurtleChallangeCSharp.Model.Entities;
 using TurtleChallangeCSharp.Model.Exceptions;
 
-namespace TurtleChallangeCSharp.Logic.Test.Parsers
+namespace TurtleChallangeCSharp.Logic.Test.DataReaders
 {
     [TestClass]
     public class MovesConfigParserTest
@@ -13,7 +13,7 @@ namespace TurtleChallangeCSharp.Logic.Test.Parsers
         MovesConfigParser parser = new MovesConfigParser();
 
         [TestMethod]
-        public void ExampleSuccess()
+        public void MovesExampleSuccess()
         {
             var source = new string[2] { "R M L M M", "R M M M" };
             

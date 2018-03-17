@@ -48,9 +48,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsers\ParserHelperTest.cs" />
-    <Compile Include="Parsers\MovesConfigParserTest.cs" />
-    <Compile Include="Parsers\TableConfigParserTest.cs" />
+    <Compile Include="DataReaders\GameInputReaderTest.cs" />
+    <Compile Include="Helpers\ParserHelperTest.cs" />
+    <Compile Include="DataReaders\MovesConfigParserTest.cs" />
+    <Compile Include="DataReaders\TableConfigParserTest.cs" />
+    <Compile Include="Helpers\StateHelperTest.cs" />
+    <Compile Include="StateMachine\TurtleStateMachineTest.cs" />
     <Compile Include="TestHelpers\RandomData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

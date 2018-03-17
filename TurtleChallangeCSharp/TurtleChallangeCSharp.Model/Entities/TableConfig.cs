@@ -26,9 +26,16 @@ namespace TurtleChallangeCSharp.Model.Entities
 
         public void Validate()
         {
+            if (StartPosition == null || Exit == null || Mines == null || SizeX  < 1 || SizeY < 1)
+            {
+                throw new BusinessException("Table configuration is invalid");
+            }
+
             StartPosition.Valiadte();
             Exit.Validate();
-            if (StartPosition.X > SizeX || StartPosition.Y > SizeY || Mines.Any(m => m.X > SizeX || m.Y > SizeY))
+            Mines.ForEach(m => m.Validate());
+
+            if (StartPosition.X >= SizeX || StartPosition.Y >= SizeY || Mines.Any(m => m.X >= SizeX || m.Y >= SizeY) || Exit.X >= SizeX || Exit.Y >= SizeY)
             {
                 throw new InvalidPositionException("Coordinate values cannot be higher than table size");
             }

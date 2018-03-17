@@ -15,8 +15,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
         {
             return mines.Any(m => m.X == position.X && m.Y == position.Y);
         }
-
-
+        
         internal static Position GetNewPosition(Moves actualMove, Position actualPosition)
         {
             if (actualMove == Moves.M)
@@ -31,6 +30,10 @@ namespace TurtleChallangeCSharp.Logic.Helpers
 
         internal static Position Turn(Moves actualMove, Position actualPosition)
         {
+            if (actualMove == Moves.M)
+            {
+                throw new BusinessException(string.Format("Invalid operation: '{0}' is not a turn", actualMove));
+            }
             var newPosition = new Position { X = actualPosition.X, Y = actualPosition.Y };
             var op = actualMove == Moves.L ? -1 : 1;
             var x = ((int)actualPosition.Direction) + op;

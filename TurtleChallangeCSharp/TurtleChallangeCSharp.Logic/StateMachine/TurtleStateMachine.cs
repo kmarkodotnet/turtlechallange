@@ -9,7 +9,7 @@ using TurtleChallangeCSharp.Model.Enums;
 using TurtleChallangeCSharp.Model.Exceptions;
 using TurtleChallangeCSharp.Model.Interfaces;
 
-namespace TurtleChallangeCSharp.Logic
+namespace TurtleChallangeCSharp.Logic.StateMachine
 {
     public class TurtleStateMachine : ITurtleStateMachine
     {
@@ -25,9 +25,11 @@ namespace TurtleChallangeCSharp.Logic
             TurtleState.Position = tableConfig.StartPosition;
 
             TurtleState.FullValidate();
+
+            TurtleState.State = StateHelper.GetState(TurtleState.Position, TurtleState.TableConfig.Mines, TurtleState.TableConfig.Exit);
         }
 
-        public void Next()
+        internal void Next()
         {
             TurtleState.ActualMove++;
             var actualMove = TurtleState.Moves[TurtleState.ActualMove - 1];
@@ -42,27 +44,20 @@ namespace TurtleChallangeCSharp.Logic
 
         public State Play()
         {
-            if (StateHelper.IsInMine(TurtleState.TableConfig.Mines, TurtleState.Position))
+            bool canMove = TurtleState.ActualMove < TurtleState.Moves.Length && !StateHelper.FinishState(TurtleState.State);
+            while (canMove)
             {
-                return State.MineHit;
-            }
-            else
-            {
-                bool canMove = true;
-                while (canMove)
+                try
                 {
-                    try
-                    {
-                        Next();
-                        canMove = TurtleState.ActualMove < TurtleState.Moves.Length && !StateHelper.FinishState(TurtleState.State);
-                    }
-                    catch (BusinessException bex)
-                    {
-                        return State.Error;
-                    }
+                    Next();
+                    canMove = TurtleState.ActualMove < TurtleState.Moves.Length && !StateHelper.FinishState(TurtleState.State);
                 }
-                return TurtleState.State;
+                catch (BusinessException bex)
+                {
+                    return State.Error;
+                }
             }
+            return StateHelper.GetState(TurtleState.Position, TurtleState.TableConfig.Mines, TurtleState.TableConfig.Exit);
         }
                 
     }

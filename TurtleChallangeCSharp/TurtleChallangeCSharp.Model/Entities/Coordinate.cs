@@ -20,5 +20,15 @@ namespace TurtleChallangeCSharp.Model.Entities
                 throw new InvalidPositionException("Coordinate values cannot be less than zero");
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            var c = obj as Coordinate;
+            if (c != null)
+            {
+                return c.X == X && c.Y == Y;
+            }
+            return false;
+        }
     }
 }

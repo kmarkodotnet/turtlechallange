@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TurtleChallangeCSharp.Logic.DataReaders;
 using TurtleChallangeCSharp.Model.Exceptions;
 
-namespace TurtleChallangeCSharp.Logic.Test.Parsers
+namespace TurtleChallangeCSharp.Logic.Test.DataReaders
 {
     [TestClass]
     public class TableConfigParserTest
@@ -11,7 +11,7 @@ namespace TurtleChallangeCSharp.Logic.Test.Parsers
         TableConfigParser parser = new TableConfigParser();
 
         [TestMethod]
-        public void ExampleSuccess()
+        public void TableExampleSuccess()
         {
             parser.Source = new string[4]
             {
