@@ -49,6 +49,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
                 case State.Success:
                 case State.MineHit:
                 case State.Error:
+                case State.LeftTable:
                     return true;
                     break;
                 case State.StillInDander:

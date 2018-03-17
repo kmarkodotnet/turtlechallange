@@ -82,10 +82,10 @@ namespace TurtleChallangeCSharp.Logic
                 int i = 1;
                 foreach (var movesConfig in MovesConfigs)
                 {
-                    _turtleStateMachine.Initialize(TableConfig, movesConfig);
+                    _turtleStateMachine.Initialize(TableConfig, movesConfig, i);
                     var state = _turtleStateMachine.Play();
                     var message = string.Format("Sequence {0}: ",i);
-                    Result result;
+                    Result result = null;
                     switch (state)
                     {
                         case Model.Enums.State.Success:
@@ -97,11 +97,11 @@ namespace TurtleChallangeCSharp.Logic
                         case Model.Enums.State.StillInDander:
                             result = new GameResult { ResultString = string.Format("{0}{1}", message, "Still in danger!") };
                             break;
-                        case Model.Enums.State.Error:
-                            result = new GameResult { ResultString = string.Format("{0}{1}", message, "Error!") };
+                        case Model.Enums.State.LeftTable:
+                            result = new ErrorResult { ResultString = string.Format("{0}{1}", message, "Left table!") };
                             break;
-                        default:
-                            throw new BusinessException("Invalid application state");
+                        case Model.Enums.State.Error:
+                            result = new ErrorResult { ResultString = string.Format("{0}{1}", message, "Error!") };
                             break;
                     }
                     grs.Add(result);

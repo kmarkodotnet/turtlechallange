@@ -23,6 +23,10 @@ namespace TurtleChallangeCSharp.Logic
         public static readonly int EVENT_TCFR_ID = 202;
         public static readonly string EVENT_TCFR_NAME = "Table config file read";
 
+        public static readonly int EVENT_PLAYINIT_ID = 301;
+        public static readonly string EVENT_PLAYINIT_NAME = "Play init";
 
+        public static readonly int EVENT_PLAY_ID = 302;
+        public static readonly string EVENT_PLAY_NAME = "Play";
     }
 }

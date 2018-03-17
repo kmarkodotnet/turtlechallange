@@ -24,8 +24,15 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
         private StateConfiguration StateConfiguration { get; set; }
         private State TurtleState { get; set; }
 
-        public void Initialize(TableConfig tableConfig, MovesConfig movesConfig)
+        private int ID { get; set; }
+
+        public void Initialize(TableConfig tableConfig, MovesConfig movesConfig, int? id = null)
         {
+            if (id.HasValue)
+            {
+                ID = id.Value;
+            }
+
             StateConfiguration = new StateConfiguration();
 
             StateConfiguration.ActualMove = 0;
@@ -36,6 +43,8 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
             StateConfiguration.FullValidate();
 
             TurtleState = StateHelper.GetState(StateConfiguration.Position, StateConfiguration.TableConfig.Mines, StateConfiguration.TableConfig.Exit);
+            
+            _logger.BusinessSuccess(BL.EVENT_PLAYINIT_ID, BL.EVENT_PLAYINIT_NAME, new { Id = ID });
         }
 
         private void Next()
@@ -62,9 +71,19 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
                 }
                 catch (BusinessException bex)
                 {
-                    return State.Error;
+                    if (bex is InvalidPositionException)
+                    {
+                        _logger.BusinessFail(BL.EVENT_PLAY_ID, BL.EVENT_PLAY_NAME, new { Id = ID, BEX = bex, Message = "Left table" });
+                        return State.LeftTable;
+                    }
+                    else
+                    {
+                        _logger.BusinessFail(BL.EVENT_PLAY_ID, BL.EVENT_PLAY_NAME, new { Id = ID, BEX = bex });
+                        return State.Error;
+                    }
                 }
             }
+            _logger.BusinessSuccess(BL.EVENT_PLAY_ID, BL.EVENT_PLAY_NAME, new { Id = ID, State = TurtleState });
             return TurtleState;
         }
     }

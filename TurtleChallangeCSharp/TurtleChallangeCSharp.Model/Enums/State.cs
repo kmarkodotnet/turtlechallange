@@ -14,6 +14,7 @@ namespace TurtleChallangeCSharp.Model.Enums
         Success,
         MineHit,
         StillInDander,
+        LeftTable,
         Error
     }
 }

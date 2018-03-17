@@ -222,7 +222,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
                         }
                    },
                    new Model.Entities.MovesConfig { Moves = new System.Collections.Generic.List<Model.Enums.Moves> { Model.Enums.Moves.M} });
-            Assert.AreEqual(tsm.Play(), Model.Enums.State.Error);
+            Assert.AreEqual(tsm.Play(), Model.Enums.State.LeftTable);
         }
     }
 }

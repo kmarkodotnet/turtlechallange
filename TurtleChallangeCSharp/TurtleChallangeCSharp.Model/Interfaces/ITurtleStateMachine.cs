@@ -18,7 +18,7 @@ namespace TurtleChallangeCSharp.Model.Interfaces
         /// </summary>
         /// <param name="tableConfig">table configuration</param>
         /// <param name="movesConfig">moves configuration</param>
-        void Initialize(TableConfig tableConfig, MovesConfig movesConfig);
+        void Initialize(TableConfig tableConfig, MovesConfig movesConfig, int? id = null);
 
         /// <summary>
         /// Runs the game on a single moves configuration
