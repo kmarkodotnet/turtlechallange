@@ -14,8 +14,8 @@ namespace TurtleChallangeCSharp.Logic.Helpers
         /// <summary>
         /// Returns the elements of the enum
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="T">Generic value which can be an enum</typeparam>
+        /// <returns>The values of the enum</returns>
         internal static List<string> GetEnumElements<T>()
             where T : struct, IConvertible
         {

@@ -9,7 +9,7 @@ using TurtleChallangeCSharp.Model.Interfaces;
 namespace TurtleChallangeCSharp.Model.Entities
 {
     /// <summary>
-    /// Objects coordinate
+    /// Object's coordinate
     /// </summary>
     public class Coordinate : IValidation
     {

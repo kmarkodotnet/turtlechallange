@@ -47,12 +47,15 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
             _logger.BusinessSuccess(BL.EVENT_PLAYINIT_ID, BL.EVENT_PLAYINIT_NAME, new { Id = ID });
         }
 
+        /// <summary>
+        /// Calculates the next step of the turtle
+        /// </summary>
         private void Next()
         {
             StateConfiguration.ActualMove++;
             var actualMove = StateConfiguration.Moves[StateConfiguration.ActualMove - 1];
             var actualPosition = StateConfiguration.Position;
-            StateConfiguration.Position = StateHelper.GetNewPosition(actualMove, actualPosition);
+            StateConfiguration.Position = StateHelper.CalculateNewPosition(actualMove, actualPosition);
             
             StateConfiguration.LightValidate();
 

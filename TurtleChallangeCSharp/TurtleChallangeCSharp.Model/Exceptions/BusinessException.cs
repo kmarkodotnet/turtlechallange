@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TurtleChallangeCSharp.Model.Exceptions
 {
+    /// <summary>
+    /// Basic business exception
+    /// </summary>
     public class BusinessException : Exception
     {
         public BusinessException()

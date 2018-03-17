@@ -72,17 +72,17 @@ namespace TurtleChallangeCSharp.Logic.Test.Helpers
             var actualMove = Moves.M;
             var actualPosition = new Position { X = 0, Y = 0, Direction = Directions.N };
             
-            var newPos1 = StateHelper.GetNewPosition(actualMove, actualPosition);
+            var newPos1 = StateHelper.CalculateNewPosition(actualMove, actualPosition);
             var newPos2 = StateHelper.MoveInDirection(actualPosition);
             Assert.AreEqual(newPos1,newPos2);
 
             actualMove = Moves.L;
             actualPosition = new Position { X = 0, Y = 0, Direction = Directions.N };
-            newPos1 = StateHelper.GetNewPosition(actualMove, actualPosition);
+            newPos1 = StateHelper.CalculateNewPosition(actualMove, actualPosition);
             newPos2 = StateHelper.MoveInDirection(actualPosition);
             Assert.AreNotEqual(newPos1, newPos2);
 
-            newPos1 = StateHelper.GetNewPosition(actualMove, actualPosition);
+            newPos1 = StateHelper.CalculateNewPosition(actualMove, actualPosition);
             newPos2 = StateHelper.Turn(actualMove, actualPosition);
             Assert.AreEqual(newPos1, newPos2);
         }

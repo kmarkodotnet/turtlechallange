@@ -8,7 +8,7 @@ using TurtleChallangeCSharp.Model.Enums;
 namespace TurtleChallangeCSharp.Model.Entities
 {
     /// <summary>
-    /// Moves configuration
+    /// A single line of moves configuration
     /// </summary>
     public class MovesConfig : List<Enums.Moves>
     {

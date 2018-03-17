@@ -17,7 +17,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
         /// Parses a move enum value
         /// </summary>
         /// <param name="value">A 'move' string</param>
-        /// <returns></returns>
+        /// <returns>The parsed move</returns>
         internal static Moves TryParseMove(string value)
         {
             Moves parsedValue = 0;
@@ -35,7 +35,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
         /// Parses a direction enum value
         /// </summary>
         /// <param name="value">A 'direction' string</param>
-        /// <returns></returns>
+        /// <returns>The parsed direcion</returns>
         internal static Directions TryParseDirections(string value)
         {
             Directions parsedValue = 0;
@@ -55,7 +55,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
         /// </summary>
         /// <param name="value">Value to parse</param>
         /// <param name="errorString">Error string depends on the kind of the value to parse</param>
-        /// <returns></returns>
+        /// <returns>The parsed integer</returns>
         internal static int TryParse(string value, string errorString)
         {
             int parsedValue = 0;

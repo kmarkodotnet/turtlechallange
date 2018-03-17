@@ -21,7 +21,7 @@ namespace TurtleChallangeCSharp.Model.Interfaces
         /// <summary>
         /// Parser of the data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The generic type of the class</returns>
         T ParseConfig();
     }
 }

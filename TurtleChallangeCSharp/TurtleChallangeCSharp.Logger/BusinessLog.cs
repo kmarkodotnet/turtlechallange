@@ -18,13 +18,8 @@ namespace TurtleChallangeCSharp.Logger
         {
             LoggerFramework(DateTime.Now, eventId, eventName, businessData);
         }
-
-        public void PublishException(Exception exception)
-        {
-            LoggerFramework(DateTime.Now, exception.Message, exception.StackTrace);
-        }
-
-        public void PublishException(Exception exception, object data)
+        
+        public void PublishException(Exception exception, object data = null)
         {
             LoggerFramework(DateTime.Now, exception.Message, exception.StackTrace, data);
         }

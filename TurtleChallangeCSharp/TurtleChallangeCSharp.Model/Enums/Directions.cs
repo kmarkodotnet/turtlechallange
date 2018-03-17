@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TurtleChallangeCSharp.Model.Enums
 {
     /// <summary>
-    /// Available directions
+    /// Available directions to the turtle
     /// </summary>
     public enum Directions
     {

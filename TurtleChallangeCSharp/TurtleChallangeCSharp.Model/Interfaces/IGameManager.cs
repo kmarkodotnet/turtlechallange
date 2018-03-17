@@ -15,7 +15,7 @@ namespace TurtleChallangeCSharp.Model.Interfaces
         /// <summary>
         /// Method that run the game
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Result of the game</returns>
         GameResults RunGame();
     }
 }

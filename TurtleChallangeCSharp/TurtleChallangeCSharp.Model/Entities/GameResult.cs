@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TurtleChallangeCSharp.Model.Entities
 {
     /// <summary>
-    /// Result 
+    /// Basic result class of the game
     /// </summary>
     public class Result
     {
@@ -28,7 +28,7 @@ namespace TurtleChallangeCSharp.Model.Entities
     public class ErrorResult : Result { }
 
     /// <summary>
-    /// Game all results
+    /// All results of the game 
     /// </summary>
     public class GameResults : List<Result> { }
 }
