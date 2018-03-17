@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TurtleChallangeCSharp.Logger;
 using TurtleChallangeCSharp.Logic.DataReaders;
 using TurtleChallangeCSharp.Model.Exceptions;
 
@@ -8,7 +9,7 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
     [TestClass]
     public class TableConfigParserTest
     {
-        TableConfigParser parser = new TableConfigParser();
+        TableConfigParser parser = new TableConfigParser(new BusinessLog());
 
         [TestMethod]
         public void TableExampleSuccess()

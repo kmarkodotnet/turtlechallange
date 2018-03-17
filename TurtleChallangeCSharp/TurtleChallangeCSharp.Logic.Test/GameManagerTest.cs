@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TurtleChallangeCSharp.Logger;
 using TurtleChallangeCSharp.Logic.DataReaders;
 using TurtleChallangeCSharp.Logic.StateMachine;
 using TurtleChallangeCSharp.Logic.Test.TestHelpers;
@@ -13,7 +14,7 @@ namespace TurtleChallangeCSharp.Logic.Test
         [TestMethod]
         public void OutOfMemoryErrorTest()
         {
-            var gameManager = new GameManager(new GameInputReaderOutOfMemory(), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
+            var gameManager = new GameManager(new GameInputReaderOutOfMemory(), new MovesConfigParser(new BusinessLog()), new TableConfigParser(new BusinessLog()), new TurtleStateMachine(new BusinessLog()), new BusinessLog());
             var g = gameManager.RunGame();
             Assert.IsTrue(g.Count == 1);
             var error = g[0] as ErrorResult;
@@ -23,7 +24,7 @@ namespace TurtleChallangeCSharp.Logic.Test
         [TestMethod]
         public void BusinessErrorTest()
         {
-            var gameManager = new GameManager(new GameInputReader("",""), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
+            var gameManager = new GameManager(new GameInputReader(new BusinessLog()), new MovesConfigParser(new BusinessLog()), new TableConfigParser(new BusinessLog()), new TurtleStateMachine(new BusinessLog()), new BusinessLog());
             var g = gameManager.RunGame();
             Assert.IsTrue(g.Count == 1);
             var error = g[0] as ErrorResult;
@@ -33,7 +34,7 @@ namespace TurtleChallangeCSharp.Logic.Test
         [TestMethod]
         public void ParseErrorTest()
         {
-            var gameManager = new GameManager(new GameInputReaderParseError(), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
+            var gameManager = new GameManager(new GameInputReaderParseError(), new MovesConfigParser(new BusinessLog()), new TableConfigParser(new BusinessLog()), new TurtleStateMachine(new BusinessLog()), new BusinessLog());
             var g = gameManager.RunGame();
             Assert.IsTrue(g.Count == 1);
             var error = g[0] as ErrorResult;
@@ -43,7 +44,7 @@ namespace TurtleChallangeCSharp.Logic.Test
         [TestMethod]
         public void ExceptionErrorTest()
         {
-            var gameManager = new GameManager(new GameInputReaderException(), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
+            var gameManager = new GameManager(new GameInputReaderException(), new MovesConfigParser(new BusinessLog()), new TableConfigParser(new BusinessLog()), new TurtleStateMachine(new BusinessLog()), new BusinessLog());
             var g = gameManager.RunGame();
             Assert.IsTrue(g.Count == 1);
             var error = g[0] as ErrorResult;
@@ -53,7 +54,7 @@ namespace TurtleChallangeCSharp.Logic.Test
         [TestMethod]
         public void GameExampleTest()
         {
-            var gameManager = new GameManager(new GameInputReaderGameExample(), new MovesConfigParser(), new TableConfigParser(), new TurtleStateMachine());
+            var gameManager = new GameManager(new GameInputReaderGameExample(), new MovesConfigParser(new BusinessLog()), new TableConfigParser(new BusinessLog()), new TurtleStateMachine(new BusinessLog()), new BusinessLog());
             var g = gameManager.RunGame();
             Assert.IsTrue(g.Count == 4);
             Assert.IsTrue(g[0] is GameResult && g[0].ResultString.Contains("Success"));

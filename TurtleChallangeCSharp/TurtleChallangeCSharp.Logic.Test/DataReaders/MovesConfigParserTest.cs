@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TurtleChallangeCSharp.Logger;
 using TurtleChallangeCSharp.Logic.DataReaders;
 using TurtleChallangeCSharp.Logic.Test.TestHelpers;
 using TurtleChallangeCSharp.Model.Entities;
@@ -10,7 +11,7 @@ namespace TurtleChallangeCSharp.Logic.Test.DataReaders
     [TestClass]
     public class MovesConfigParserTest
     {
-        MovesConfigParser parser = new MovesConfigParser();
+        MovesConfigParser parser = new MovesConfigParser(new BusinessLog());
 
         [TestMethod]
         public void MovesExampleSuccess()

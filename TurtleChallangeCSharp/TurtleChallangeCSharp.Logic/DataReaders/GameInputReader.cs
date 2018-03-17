@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurtleChallangeCSharp.Logger.Interface;
 using TurtleChallangeCSharp.Model.Exceptions;
 using TurtleChallangeCSharp.Model.Interfaces;
 
@@ -11,23 +12,27 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
 {
     public class GameInputReader : IGameInputReader
     {
-        private string tableConfigPath;
-        private string movesConfigPath;
+        public string TableConfigPath { get; set; }
+        public string MovesConfigPath { get; set; }
+        ILogger _logger;
 
-        public GameInputReader(string tableConfigPath, string movesConfigPath)
+        public GameInputReader(ILogger logger)
         {
-            this.tableConfigPath = tableConfigPath;
-            this.movesConfigPath = movesConfigPath;
+            _logger = logger;
         }
 
         public string[] GetMovesConfig()
         {
-            return ReadFile(movesConfigPath);
+            var data = ReadFile(MovesConfigPath);
+            _logger.BusinessSuccess(BL.EVENT_MCFR_ID, BL.EVENT_MCFR_NAME);
+            return data;
         }
 
         public string[] GetTableConfig()
         {
-            return ReadFile(tableConfigPath);
+            var data = ReadFile(TableConfigPath);
+            _logger.BusinessSuccess(BL.EVENT_TCFR_ID, BL.EVENT_TCFR_NAME);
+            return data;
         }
 
         private string[] ReadFile(string filePath)
@@ -40,7 +45,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
             }
             catch (Exception ex)
             {
-                throw new BusinessException { Reason = string.Format("Unable to load file: {0}", filePath), InnerException = ex };
+                throw new BusinessException(string.Format("Unable to load file: {0}", filePath), ex );
             }
         }
     }

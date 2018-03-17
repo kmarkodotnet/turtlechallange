@@ -8,7 +8,19 @@ namespace TurtleChallangeCSharp.Model.Exceptions
 {
     public class BaseException : Exception
     {
-        public string Reason { get; set; }
-        public new Exception InnerException { get; set; }
+        public BaseException()
+        {
+
+        }
+
+        public BaseException(string message):base(message)
+        {
+
+        }
+
+        public BaseException(string message, Exception inner) : base(message, inner)
+        {
+
+        }
     }
 }

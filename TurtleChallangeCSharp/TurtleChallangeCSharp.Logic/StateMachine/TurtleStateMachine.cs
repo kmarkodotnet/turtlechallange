@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurtleChallangeCSharp.Logger.Interface;
 using TurtleChallangeCSharp.Logic.Helpers;
 using TurtleChallangeCSharp.Model.Entities;
 using TurtleChallangeCSharp.Model.Enums;
@@ -13,6 +14,13 @@ namespace TurtleChallangeCSharp.Logic.StateMachine
 {
     public class TurtleStateMachine : ITurtleStateMachine
     {
+        ILogger _logger;
+
+        public TurtleStateMachine(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         private StateConfiguration StateConfiguration { get; set; }
         private State TurtleState { get; set; }
 

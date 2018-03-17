@@ -8,6 +8,21 @@ namespace TurtleChallangeCSharp.Model.Exceptions
 {
     public class ParseException : BaseException
     {
-        public new object Data { get; set; }
+        public object ParseData { get; set; }
+
+        public ParseException()
+        {
+
+        }
+
+        public ParseException(string message) : base(message)
+        {
+            
+        }
+
+        public ParseException(string message, Exception inner) : base(message, inner)
+        {
+
+        }
     }
 }

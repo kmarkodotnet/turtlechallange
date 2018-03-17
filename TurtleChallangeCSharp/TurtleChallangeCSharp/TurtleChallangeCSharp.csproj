@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TurtleChallangeCSharp.Logger\TurtleChallangeCSharp.Logger.csproj">
+      <Project>{0E27AF31-9455-4E58-AA21-009517ADD0F3}</Project>
+      <Name>TurtleChallangeCSharp.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TurtleChallangeCSharp.Logic\TurtleChallangeCSharp.Logic.csproj">
       <Project>{D0EDF474-E71C-416D-A132-9ACC995E3964}</Project>
       <Name>TurtleChallangeCSharp.Logic</Name>

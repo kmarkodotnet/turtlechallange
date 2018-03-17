@@ -36,7 +36,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
             else
             {
-                throw new ParseException { Data = value, Reason = string.Format("Move config parameter is incorrect") };
+                throw new ParseException(string.Format("Move config parameter is incorrect")) { ParseData = value };
             }
         }
 
@@ -50,7 +50,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
             else
             {
-                throw new ParseException { Data = value, Reason = string.Format("{0} parameter is incorrect", errorString) };
+                throw new ParseException(string.Format("{0} parameter is incorrect", errorString)) { ParseData = value };
             }
         }
 
@@ -63,7 +63,7 @@ namespace TurtleChallangeCSharp.Logic.Helpers
             }
             else
             {
-                throw new ParseException { Data = value, Reason = string.Format("{0} parameter is incorrect", errorString) };
+                throw new ParseException(string.Format("{0} parameter is incorrect", errorString)) { ParseData = value };
             }
         }
     }

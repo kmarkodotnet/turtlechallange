@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleChallangeCSharp.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleChallangeCSharp.Logic.Test", "TurtleChallangeCSharp.Logic.Test\TurtleChallangeCSharp.Logic.Test.csproj", "{16E2478F-7070-4AC4-84E4-4A8B206BF74D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleChallangeCSharp.Logger", "TurtleChallangeCSharp.Logger\TurtleChallangeCSharp.Logger.csproj", "{0E27AF31-9455-4E58-AA21-009517ADD0F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{16E2478F-7070-4AC4-84E4-4A8B206BF74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16E2478F-7070-4AC4-84E4-4A8B206BF74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16E2478F-7070-4AC4-84E4-4A8B206BF74D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E27AF31-9455-4E58-AA21-009517ADD0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E27AF31-9455-4E58-AA21-009517ADD0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E27AF31-9455-4E58-AA21-009517ADD0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E27AF31-9455-4E58-AA21-009517ADD0F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

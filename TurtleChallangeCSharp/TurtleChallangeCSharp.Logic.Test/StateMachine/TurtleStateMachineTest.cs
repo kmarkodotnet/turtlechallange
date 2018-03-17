@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TurtleChallangeCSharp.Logger;
 using TurtleChallangeCSharp.Logic.StateMachine;
 using TurtleChallangeCSharp.Model.Exceptions;
 
@@ -11,7 +12,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
         [TestMethod]
         public void InitializeErrorTest()
         {
-            var tsm = new TurtleStateMachine();
+            var tsm = new TurtleStateMachine(new BusinessLog());
             Assert.ThrowsException<BusinessException>(() => tsm.Initialize(new Model.Entities.TableConfig { }, new Model.Entities.MovesConfig { }));
 
             Assert.ThrowsException<BusinessException>(() => tsm.Initialize(
@@ -96,7 +97,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
         [TestMethod]
         public void PlayTest()
         {
-            var tsm = new TurtleStateMachine();
+            var tsm = new TurtleStateMachine(new BusinessLog());
             tsm.Initialize(
                    new Model.Entities.TableConfig
                    {
@@ -206,7 +207,7 @@ namespace TurtleChallangeCSharp.Logic.Test.StateMachine
         [TestMethod]
         public void PlayErrorTest()
         {
-            var tsm = new TurtleStateMachine();
+            var tsm = new TurtleStateMachine(new BusinessLog());
 
             tsm.Initialize(
                    new Model.Entities.TableConfig

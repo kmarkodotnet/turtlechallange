@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurtleChallangeCSharp.Logger.Interface;
 using TurtleChallangeCSharp.Logic.Helpers;
 using TurtleChallangeCSharp.Model.Entities;
 using TurtleChallangeCSharp.Model.Enums;
@@ -14,12 +15,18 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
     public class TableConfigParser : ITableConfigParser
     {
         public string[] Source { get; set; }
+        ILogger _logger;
+
+        public TableConfigParser(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         public TableConfig ParseConfig()
         {
             if (Source == null || Source.Length != 4)
             {
-                throw new ParseException { Data = Source, Reason = "Table configuration is empty or the parameters are incorrect" };
+                throw new ParseException("Table configuration is empty or the parameters are incorrect") { ParseData = Source };
             }
 
             var config = new TableConfig();
@@ -41,7 +48,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
                 
             if (startPosValues.Length != 3)
             {
-                throw new ParseException { Data = Source, Reason = string.Format("Start position parameter value is incorrect") };
+                throw new ParseException(string.Format("Start position parameter value is incorrect") ) { ParseData = Source };
             }
             config.StartPosition.Direction = ParserHelper.TryParseDirections(startPosValues[2], "Start position");
 
@@ -88,7 +95,7 @@ namespace TurtleChallangeCSharp.Logic.DataReaders
 
             if (coordinates.Length != 2)
             {
-                throw new ParseException { Data = Source, Reason = string.Format("{0} parameter value is incorrect", errorString) };
+                throw new ParseException(string.Format("{0} parameter value is incorrect", errorString)) { ParseData = coordinateSource } ;
             }
             return ParseCoordinate(coordinates, errorString);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurtleChallangeCSharp.Logger.Interface;
 using TurtleChallangeCSharp.Model.Entities;
 using TurtleChallangeCSharp.Model.Exceptions;
 using TurtleChallangeCSharp.Model.Interfaces;
@@ -19,12 +20,15 @@ namespace TurtleChallangeCSharp.Logic
         private TableConfig TableConfig { get; set; }
         private MovesConfigs MovesConfigs { get; set; }
 
-        public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser, ITurtleStateMachine turtleStateMachine)
+        ILogger _logger;
+
+        public GameManager(IGameInputReader gameInputReader, IMovesConfigParser movesConfigParser, ITableConfigParser tableConfigParser, ITurtleStateMachine turtleStateMachine, ILogger logger)
         {
             _gameInputReader = gameInputReader;
             _movesConfigParser = movesConfigParser;
             _tableConfigParser = tableConfigParser;
             _turtleStateMachine = turtleStateMachine;
+            _logger = logger;
         }
 
         private Result Initialize()
@@ -38,23 +42,29 @@ namespace TurtleChallangeCSharp.Logic
                 MovesConfigs = _movesConfigParser.ParseConfig();
 
                 TableConfig.Validate();
-                
+
+                _logger.BusinessSuccess(BL.EVENT_APPSTART_ID, BL.EVENT_APPSTART_NAME);
+
                 return new Result();
             }
             catch (ParseException pex)
             {
-                return new ErrorResult { ResultString = pex.Reason };
+                _logger.BusinessFail(BL.EVENT_APPSTART_ID, BL.EVENT_APPSTART_NAME, pex);
+                return new ErrorResult { ResultString = pex.Message };
             }
             catch (BusinessException bex)
             {
-                return new ErrorResult { ResultString = bex.Reason };
+                _logger.BusinessFail(BL.EVENT_APPSTART_ID, BL.EVENT_APPSTART_NAME, bex);
+                return new ErrorResult { ResultString = bex.Message };
             }
             catch (OutOfMemoryException oex)
             {
+                _logger.BusinessFail(BL.EVENT_APPSTART_ID, BL.EVENT_APPSTART_NAME, oex);
                 return new ErrorResult { ResultString = "Application is out of memory" };
             }
             catch (Exception ex)
             {
+                _logger.PublishException(ex);
                 return new ErrorResult { ResultString = "An error occured" };
             }
         }
@@ -97,6 +107,9 @@ namespace TurtleChallangeCSharp.Logic
                     grs.Add(result);
                     i++;
                 }
+
+                _logger.BusinessSuccess(BL.EVENT_APPFIN_ID, BL.EVENT_APPFIN_NAME);
+
                 return grs;
             }
         }

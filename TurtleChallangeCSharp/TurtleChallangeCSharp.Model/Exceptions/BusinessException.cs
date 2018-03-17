@@ -12,9 +12,15 @@ namespace TurtleChallangeCSharp.Model.Exceptions
         {
 
         }
-        public BusinessException(string reason)
+
+        public BusinessException(string message) : base(message)
         {
-            Reason = reason;
+
+        }
+
+        public BusinessException(string message, Exception inner) : base(message, inner)
+        {
+
         }
     }
 }
